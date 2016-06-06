@@ -1,0 +1,7 @@
+"Scope","CPUTIME (usec).[0,0] (I)","CPUTIME (usec).[0,0] (E)"
+"Experiment Aggregate Metrics",1.67e+04 100 %,1.67e+04 100 %
+"<program root>",1.67e+04 100 %,
+"main",1.67e+04 100 %,1.67e+04 100 %
+"loop at : 308",1.67e+04 100 %,
+"loop at : 325",1.67e+04 100 %,1.67e+04 100 %
+": 325",1.67e+04 100 %,1.67e+04 100 %
