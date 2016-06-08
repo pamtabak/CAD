@@ -3,6 +3,7 @@
 #include <cstring>
 #include <cstdlib>
 #include <chrono>
+#include <algorithm>    // std::max, std::min
 
 using namespace std;
 
@@ -29,19 +30,49 @@ void multiplyMatrixes(int** matrixA, int** matrixB, int matrixSize)
 		C[i] = new int[matrixSize];
 	}
 
-	for (int j = 0; j < matrixSize; j++)   // Loop J
+	for(int i = 0; i < matrixSize; i++) // Loop I
 	{
-    	for(int i = 0; i < matrixSize; i++) // Loop I
+    	for (int j = 0; j < matrixSize; j++)   // Loop J
 	    {   
 	    	C[i][j] = 0;
 	    	for(int k = 0; k < matrixSize; k++) // Loop K
 	    	{
-	        	C[i][j] += matrixA[i][k] * matrixB[k][j];
+	        	// C[i][j] = C[i][j] + matrixA[i][k] * matrixB[k][j];
+	        	C[i][j] = C[i][j] + matrixA[j][k] * matrixB[k][i]; // invertendo i com j
 	        }
 	    }
 	}
 }
 
+// void blockingMultiplyMatrixes(int** matrixA, int** matrixB, int matrixSize, int block)
+// {
+// 	int** C = new int*[matrixSize];
+// 	for (int i = 0; i < matrixSize; i++)
+// 	{
+// 		C[i] = new int[matrixSize];
+// 	}
+
+// 	for (int jj = 0; jj < matrixSize; jj += block)
+// 	{
+// 		for (int ii = 0; ii < matrixSize; ii += block)
+// 		{
+// 			for (int kk = 0; kk < matrixSize; kk += block)
+// 			{
+// 				for (int j = jj; min(matrixSize, jj + b - 1); j++)
+// 				{
+// 					for (int i = ii; min(matrixSize, ii + b - 1); i++)
+// 					{
+// 						for (int k = kk; min(matrixSize, kk + b - 1); k++)
+// 						{
+// 							C[i][j] = C[i][j] + matrixA[i][k] * matrixB[k][j];
+// 							// C[i][j] = C[i][j] + matrixA[j][k] * matrixB[k][i]; // invertendo i com j
+// 						}
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// }
 
 int main(int argc, const char* argv[])
 {
