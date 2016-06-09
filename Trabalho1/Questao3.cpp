@@ -29,16 +29,16 @@ void multiplyMatrixes(int** matrixA, int** matrixB, int matrixSize)
 	{
 		C[i] = new int[matrixSize];
 	}
-
-	for(int i = 0; i < matrixSize; i++) // Loop I
+	
+	for (int j = 0; j < matrixSize; j++)   // Loop J
 	{
-    	for (int j = 0; j < matrixSize; j++)   // Loop J
+    	for(int i = 0; i < matrixSize; i++) // Loop I
 	    {   
 	    	C[i][j] = 0;
 	    	for(int k = 0; k < matrixSize; k++) // Loop K
 	    	{
-	        	// C[i][j] = C[i][j] + matrixA[i][k] * matrixB[k][j];
-	        	C[i][j] = C[i][j] + matrixA[j][k] * matrixB[k][i]; // invertendo i com j
+	        	C[i][j] = C[i][j] + matrixA[i][k] * matrixB[k][j];
+	        	// C[i][j] = C[i][j] + matrixA[j][k] * matrixB[k][i]; // invertendo i com j
 	        }
 	    }
 	}

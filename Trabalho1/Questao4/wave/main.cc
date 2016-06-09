@@ -181,25 +181,55 @@ void run_wave_propagation(float ***ptr_next, float ***ptr_prev, float ***ptr_vel
 }
 
 
+// void iso_3dfd_it(float ***ptr_next, float ***ptr_prev, float ***ptr_vel, float *coeff, const int n1, const int n2, const int n3)
+// {
+// 	for (int k = 0; k < n3; k++) 
+// 	{
+// 		if (k >= HALF_LENGTH && k < (n3 - HALF_LENGTH))
+// 		{
+// 		   for (int j = 0; j < n2; j++) 
+// 		   {
+// 		   		if (j >= HALF_LENGTH && j < (n2 - HALF_LENGTH))
+// 		   		{
+// 					for (int i = 0; i < n1; i++)
+// 					{
+// 						if (i >= HALF_LENGTH && i < (n1 - HALF_LENGTH))
+// 						{
+// 							float value = 0.0;
+// 							value += ptr_prev[i][j][k] * coeff[0];
+// 							for (int ir = 1; ir <= HALF_LENGTH; ir++) 
+// 							{
+// 								value += coeff[ir] * (ptr_prev[i+ir][j][k] + ptr_prev[i-ir][j][k]);        // horizontal
+// 								value += coeff[ir] * (ptr_prev[i][j+ir][k] + ptr_prev[i][j-ir][k]);        // vertical
+// 								value += coeff[ir] * (ptr_prev[i][j][k+ir] + ptr_prev[i][j][k-ir]);        // in front / behind
+// 							}
+// 							ptr_next[i][j][k] = 2.0f* ptr_prev[i][j][k] - ptr_next[i][j][k] + value*ptr_vel[i][j][k];
+							
+// 						}
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// }
+
 void iso_3dfd_it(float ***ptr_next, float ***ptr_prev, float ***ptr_vel, float *coeff, const int n1, const int n2, const int n3)
 {
-	for (int k = 0;k< n3; k++) {
-	   for (int j = 0; j<n2; j++) {
-			for (int i = 0; i<n1; i++)
-			{
-
-				if (i >= HALF_LENGTH && i<(n1 - HALF_LENGTH) && j >= HALF_LENGTH && j<(n2 - HALF_LENGTH) && k >= HALF_LENGTH && k<(n3 - HALF_LENGTH))
+	for (int k = HALF_LENGTH; k < n3 - HALF_LENGTH; k++) 
+	{
+	   for (int j = HALF_LENGTH; j < n2 - HALF_LENGTH; j++) 
+	   {
+			for (int i = HALF_LENGTH; i < n1 - HALF_LENGTH; i++)
+			{					
+				float value = 0.0;
+				value += ptr_prev[i][j][k] * coeff[0];
+				for (int ir = 1; ir <= HALF_LENGTH; ir++) 
 				{
-
-					float value = 0.0;
-					value += ptr_prev[i][j][k] * coeff[0];
-					for (int ir = 1; ir <= HALF_LENGTH; ir++) {
-						value += coeff[ir] * (ptr_prev[i+ir][j][k] + ptr_prev[i-ir][j][k]);        // horizontal
-						value += coeff[ir] * (ptr_prev[i][j+ir][k] + ptr_prev[i][j-ir][k]);        // vertical
-						value += coeff[ir] * (ptr_prev[i][j][k+ir] + ptr_prev[i][j][k-ir]); // in front / behind
-					}
-					ptr_next[i][j][k] = 2.0f* ptr_prev[i][j][k] - ptr_next[i][j][k] + value*ptr_vel[i][j][k];
+					value += coeff[ir] * (ptr_prev[i+ir][j][k] + ptr_prev[i-ir][j][k]);        // horizontal
+					value += coeff[ir] * (ptr_prev[i][j+ir][k] + ptr_prev[i][j-ir][k]);        // vertical
+					value += coeff[ir] * (ptr_prev[i][j][k+ir] + ptr_prev[i][j][k-ir]);        // in front / behind
 				}
+				ptr_next[i][j][k] = 2.0f* ptr_prev[i][j][k] - ptr_next[i][j][k] + value*ptr_vel[i][j][k];
 			}
 		}
 	}
@@ -223,7 +253,6 @@ void write_plane_XY(float ***r, Parameters *p, int t_step, const char* rootname)
 
 	 fclose(fout);
 
-
 	 sprintf(fname,"%s_%03d.plot",rootname, t_step);
 	 fout = fopen(fname,"w");
 	 fprintf(fout, "set terminal png\n");
@@ -235,7 +264,4 @@ void write_plane_XY(float ***r, Parameters *p, int t_step, const char* rootname)
 	 fprintf(fout, "set dgrid3d 100,100\n");
 	 fprintf(fout, "splot \'%s_%03d.dat\' u 1:2:3 t\"\"\n", rootname, t_step);
 	 fclose(fout);
-
-
-
 }
