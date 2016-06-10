@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
+#include <algorithm>    // std::max, std::min
 
 #include "definitions.h"
 
@@ -213,23 +214,55 @@ void run_wave_propagation(float ***ptr_next, float ***ptr_prev, float ***ptr_vel
 // 	}
 // }
 
+// void iso_3dfd_it(float ***ptr_next, float ***ptr_prev, float ***ptr_vel, float *coeff, const int n1, const int n2, const int n3)
+// {
+// 	for (int k = HALF_LENGTH; k < n3 - HALF_LENGTH; k++) 
+// 	{
+// 	   for (int j = HALF_LENGTH; j < n2 - HALF_LENGTH; j++) 
+// 	   {
+// 			for (int i = HALF_LENGTH; i < n1 - HALF_LENGTH; i++)
+// 			{					
+// 				float value = 0.0;
+// 				value += ptr_prev[i][j][k] * coeff[0];
+// 				for (int ir = 1; ir <= HALF_LENGTH; ir++) 
+// 				{
+// 					value += coeff[ir] * (ptr_prev[i+ir][j][k] + ptr_prev[i-ir][j][k]);        // horizontal
+// 					value += coeff[ir] * (ptr_prev[i][j+ir][k] + ptr_prev[i][j-ir][k]);        // vertical
+// 					value += coeff[ir] * (ptr_prev[i][j][k+ir] + ptr_prev[i][j][k-ir]);        // in front / behind
+// 				}
+// 				ptr_next[i][j][k] = 2.0f* ptr_prev[i][j][k] - ptr_next[i][j][k] + value*ptr_vel[i][j][k];
+// 			}
+// 		}
+// 	}
+// }
+
 void iso_3dfd_it(float ***ptr_next, float ***ptr_prev, float ***ptr_vel, float *coeff, const int n1, const int n2, const int n3)
 {
-	for (int k = HALF_LENGTH; k < n3 - HALF_LENGTH; k++) 
+	int block = 4;
+	for (int kk = HALF_LENGTH; kk < n3 - HALF_LENGTH; kk += block) 
 	{
-	   for (int j = HALF_LENGTH; j < n2 - HALF_LENGTH; j++) 
+	   for (int jj = HALF_LENGTH; jj < n2 - HALF_LENGTH; jj += block) 
 	   {
-			for (int i = HALF_LENGTH; i < n1 - HALF_LENGTH; i++)
+			for (int ii = HALF_LENGTH; ii < n1 - HALF_LENGTH; ii += block)
 			{					
-				float value = 0.0;
-				value += ptr_prev[i][j][k] * coeff[0];
-				for (int ir = 1; ir <= HALF_LENGTH; ir++) 
+				for (int k = kk; k < std::min(n3 - HALF_LENGTH, kk + block); k++)
 				{
-					value += coeff[ir] * (ptr_prev[i+ir][j][k] + ptr_prev[i-ir][j][k]);        // horizontal
-					value += coeff[ir] * (ptr_prev[i][j+ir][k] + ptr_prev[i][j-ir][k]);        // vertical
-					value += coeff[ir] * (ptr_prev[i][j][k+ir] + ptr_prev[i][j][k-ir]);        // in front / behind
+					for (int j = jj; j < std::min(n2 - HALF_LENGTH, jj + block); j++)
+					{
+						for (int i = ii; i < std::min(n1 - HALF_LENGTH, ii + block); i++)
+						{
+							float value = 0.0;
+							value += ptr_prev[i][j][k] * coeff[0];
+							for (int ir = 1; ir <= HALF_LENGTH; ir++) 
+							{
+								value += coeff[ir] * (ptr_prev[i+ir][j][k] + ptr_prev[i-ir][j][k]);        // horizontal
+								value += coeff[ir] * (ptr_prev[i][j+ir][k] + ptr_prev[i][j-ir][k]);        // vertical
+								value += coeff[ir] * (ptr_prev[i][j][k+ir] + ptr_prev[i][j][k-ir]);        // in front / behind
+							}
+							ptr_next[i][j][k] = 2.0f* ptr_prev[i][j][k] - ptr_next[i][j][k] + value*ptr_vel[i][j][k];
+						}
+					}	
 				}
-				ptr_next[i][j][k] = 2.0f* ptr_prev[i][j][k] - ptr_next[i][j][k] + value*ptr_vel[i][j][k];
 			}
 		}
 	}
