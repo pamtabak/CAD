@@ -82,13 +82,13 @@ int main(int argc, const char* argv[])
 	//{
 	chrono::high_resolution_clock::time_point startTime = chrono::high_resolution_clock::now();
 
-	int matrixSize = 1000;
+	int matrixSize = 5000;
 
 	int** matrixA = fillMatrix(matrixSize, 1);
 	int** matrixB = fillMatrix(matrixSize, 1);	
 
-	// multiplyMatrixes(matrixA, matrixB, matrixSize);
-	blockingMultiplyMatrixes(matrixA, matrixB, matrixSize, 2);
+	multiplyMatrixes(matrixA, matrixB, matrixSize);
+	// blockingMultiplyMatrixes(matrixA, matrixB, matrixSize, 2);
 
 	chrono::high_resolution_clock::time_point endTime = chrono::high_resolution_clock::now();
 	chrono::duration<double> endTimeSpan = chrono::duration_cast<chrono::duration<double> >(endTime - startTime);
@@ -101,7 +101,6 @@ int main(int argc, const char* argv[])
 	}
 	delete [] matrixA;
 	delete [] matrixB;
-	//}
 	
 	return 0;
 }
