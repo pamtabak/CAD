@@ -3,9 +3,11 @@
 #include <string.h>
 #include <time.h>
 #include <algorithm>    // std::max, std::min
+#include <omp.h>
 
 #include "definitions.h"
 
+// g++ main.cc -openmp -o main.out  - How to compile
 
 typedef struct {
 	int nx;   	        // número de pontos em X
@@ -48,6 +50,7 @@ void Deallocate3DMatrix(float ***array, Parameters *p)
 		  free(array[i]);
 	}
 
+	free(array);
 }
 
 // Inicializa as matrizes com os valores iniciais
@@ -138,26 +141,30 @@ int main(int argc, char** argv)
 		exit(-1);
 	}
 
-  printf("Inicializando dados\n");
+    printf("Inicializando dados\n");
 	initialize(p.prev, p.next, p.vel, &p);
 
-  // Escreve o pulso inicial
-  write_plane_XY(p.prev, &p, 0, "wave");
+    // Escreve o pulso inicial
+    write_plane_XY(p.prev, &p, 0, "wave"); 
 
-  printf("Propagando a onda...\n");
-  // Calcula a propagacão em um determinado intervalo de tempo
-	run_wave_propagation(p.next, p.prev, p.vel, coeff, &p);
+    time_t secondsInit, secondsFinal;
 
-  printf("Finalizando...\n");
-  // desaloca a memoria
-	Deallocate3DMatrix(p.prev, &p);
+    secondsInit = time(NULL);
+    printf("Seconds = %ld\n", secondsInit / 3600);
+    printf("Propagando a onda...\n");
+      // Calcula a propagacão em um determinado intervalo de tempo
+  	run_wave_propagation(p.next, p.prev, p.vel, coeff, &p);
+      printf("Finalizando...\n");
+  
+    secondsFinal = time(NULL);
+    printf("Seconds = %ld\n", secondsFinal / 3600);
+
+    // desaloca a memoria
+    Deallocate3DMatrix(p.prev, &p);
 	Deallocate3DMatrix(p.next, &p);
 	Deallocate3DMatrix(p.vel , &p);
 	return 0;
-
 }
-
-
 
 void run_wave_propagation(float ***ptr_next, float ***ptr_prev, float ***ptr_vel, float *coeff, Parameters *p)
 {
@@ -178,29 +185,33 @@ void run_wave_propagation(float ***ptr_next, float ***ptr_prev, float ***ptr_vel
 void iso_3dfd_it(float ***ptr_next, float ***ptr_prev, float ***ptr_vel, float *coeff, const int n1, const int n2, const int n3)
 {
 	int block = 4;
-	for (int ii = HALF_LENGTH; ii < n1 - HALF_LENGTH; ii += block)
+	#pragma omp parallel
 	{
-		for (int jj = HALF_LENGTH; jj < n2 - HALF_LENGTH; jj += block) 
-	   {
-			for (int kk = HALF_LENGTH; kk < n3 - HALF_LENGTH; kk += block) 
-			{			
-				for (int i = ii; i < std::min(n1 - HALF_LENGTH, ii + block); i++)		
-				{
-					for (int j = jj; j < std::min(n2 - HALF_LENGTH, jj + block); j++)
+		#pragma omp parallel for default(none) private(ii, jj, kk, i, j, k, value, ir) shared(ptr_next, ptr_prev, coeff, ptr_vel, n1, n2, n3, HALF_LENGTH, block) schedule(static)
+		for (int ii = HALF_LENGTH; ii < n1 - HALF_LENGTH; ii += block)
+		{
+			for (int jj = HALF_LENGTH; jj < n2 - HALF_LENGTH; jj += block) 
+		   {
+				for (int kk = HALF_LENGTH; kk < n3 - HALF_LENGTH; kk += block) 
+				{			
+					for (int i = ii; i < std::min(n1 - HALF_LENGTH, ii + block); i++)		
 					{
-						for (int k = kk; k < std::min(n3 - HALF_LENGTH, kk + block); k++)
+						for (int j = jj; j < std::min(n2 - HALF_LENGTH, jj + block); j++)
 						{
-							float value = 0.0;
-							value += ptr_prev[i][j][k] * coeff[0];
-							for (int ir = 1; ir <= HALF_LENGTH; ir++) 
+							for (int k = kk; k < std::min(n3 - HALF_LENGTH, kk + block); k++)
 							{
-								value += coeff[ir] * (ptr_prev[i+ir][j][k] + ptr_prev[i-ir][j][k]);        // horizontal
-								value += coeff[ir] * (ptr_prev[i][j+ir][k] + ptr_prev[i][j-ir][k]);        // vertical
-								value += coeff[ir] * (ptr_prev[i][j][k+ir] + ptr_prev[i][j][k-ir]);        // in front / behind
+								float value = 0.0;
+								value += ptr_prev[i][j][k] * coeff[0];
+								for (int ir = 1; ir <= HALF_LENGTH; ir++) 
+								{
+									value += coeff[ir] * (ptr_prev[i+ir][j][k] + ptr_prev[i-ir][j][k]);        // horizontal
+									value += coeff[ir] * (ptr_prev[i][j+ir][k] + ptr_prev[i][j-ir][k]);        // vertical
+									value += coeff[ir] * (ptr_prev[i][j][k+ir] + ptr_prev[i][j][k-ir]);        // in front / behind
+								}
+								ptr_next[i][j][k] = 2.0f* ptr_prev[i][j][k] - ptr_next[i][j][k] + value*ptr_vel[i][j][k];
 							}
-							ptr_next[i][j][k] = 2.0f* ptr_prev[i][j][k] - ptr_next[i][j][k] + value*ptr_vel[i][j][k];
-						}
-					}	
+						}	
+					}
 				}
 			}
 		}
