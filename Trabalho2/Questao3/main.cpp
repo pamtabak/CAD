@@ -39,14 +39,12 @@ int main(int argc, const char* argv[])
 	int N = 0;
 	int M = 0;
 
-	// Criar Quadrado Unitario
-	// Para facilitar, (0,0) (0,1) (1,0) (1,1)
+	// Unit Square (0,0) (0,1) (1,0) (1,1)
 	point center;
 	center.x = 0.5;
 	center.y = 0.5;
 	double radium  = 0.5;
 
-	// Gerar numeros aleatorios, sendo que cada thread gera numeros diferentes
 	unsigned int th_id = omp_get_thread_num();
 	#pragma omp parallel default(none) shared(N,M, radium, th_id, center)
 	{
@@ -57,7 +55,6 @@ int main(int argc, const char* argv[])
 			point p;
 			p.x = randomDouble();
 			p.y = randomDouble();
-			// printf("%f,%f\n", p.x, p.y);
 
 			#pragma omp critical
 			{
