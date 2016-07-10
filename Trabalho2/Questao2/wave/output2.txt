@@ -1,0 +1,59 @@
+
+
+Debug: Parsing with Opari2
+Executing> /home/pedroeusebio/local/tau2/x86_64/bin/opari2 --nosrc main.cc main.pomp.cc
+
+WARNING: Disabling instrumentation of source code.
+         Please either configure with -pdt=<dir> option
+         or switch to compiler based instrumentation with -optCompInst
+
+
+Debug: PDT failed, switching to compiler-based instrumentation
+
+Debug: Using compiler-based instrumentation
+
+
+Debug: Compiling (Individually) with Instrumented Code
+Executing> /usr/bin/gcc -openmp -I. -c main.pomp.cc -DPROFILING_ON -DTAU_PAPI -I/home/pedroeusebio/local/papi/src -I/home/pedroeusebio/local/papi/include -DTAU_GNU -DTAU_DOT_H_LESS_HEADERS -DTAU_LINUX_TIMERS -DTAU_LARGEFILE -D_LARGEFILE64_SOURCE -DHAVE_TR1_HASH_MAP -DTAU_SS_ALLOC_SUPPORT -DEBS_CLOCK_RES=1 -DTAU_STRSIGNAL_OK -DTAU_TRACK_LD_LOADER -DTAU_OPENMP_NESTED -DTAU_USE_TLS -fopenmp -DTAU_OPENMP -DTAU_UNIFY -I/home/pedroeusebio/local/tau2/include -DPROFILING_ON -DTAU_PAPI -I/home/pedroeusebio/local/papi/src -I/home/pedroeusebio/local/papi/include -DTAU_GNU -DTAU_DOT_H_LESS_HEADERS -DTAU_LINUX_TIMERS -DTAU_LARGEFILE -D_LARGEFILE64_SOURCE -DHAVE_TR1_HASH_MAP -DTAU_SS_ALLOC_SUPPORT -DEBS_CLOCK_RES=1 -DTAU_STRSIGNAL_OK -DTAU_TRACK_LD_LOADER -DTAU_OPENMP_NESTED -DTAU_USE_TLS -fopenmp -DTAU_OPENMP -DTAU_UNIFY -I/home/pedroeusebio/local/tau2/include -o main.pomp.o -g -finstrument-functions -finstrument-functions-exclude-file-list=/usr/include
+main.pomp.cc: In function ‘void iso_3dfd_it(float***, float***, float***, float*, int, int, int)’:
+main.pomp.cc:200:52: error: ‘pomp2_ctc_2’ not specified in enclosing parallel
+ {   POMP2_For_enter( &pomp2_region_2, pomp2_ctc_2  );
+                                                    ^
+main.pomp.cc:197:9: error: enclosing parallel
+ #pragma omp parallel default(none) private(ii, jj, kk, i, j, k, value, ir) shared(ptr_next, ptr_prev, coeff, ptr_vel, n1, n2, n3, half, block)  POMP2_DLIST_00001 firstprivate(pomp2_old_task) if(pomp2_if) num_threads(pomp2_num_threads)
+         ^
+Error: Tried Looking for file: main.pomp.o
+Error: Command(Executable) is -- /usr/bin/gcc
+Error: Full Command attempted is -- /usr/bin/gcc  -openmp  -I. -c  main.pomp.cc    -DPROFILING_ON            -DTAU_PAPI -I/home/pedroeusebio/local/papi/src -I/home/pedroeusebio/local/papi/include             -DTAU_GNU -DTAU_DOT_H_LESS_HEADERS                     -DTAU_LINUX_TIMERS                                 -DTAU_LARGEFILE -D_LARGEFILE64_SOURCE                        -DHAVE_TR1_HASH_MAP    -DTAU_SS_ALLOC_SUPPORT  -DEBS_CLOCK_RES=1  -DTAU_STRSIGNAL_OK    -DTAU_TRACK_LD_LOADER     -DTAU_OPENMP_NESTED   -DTAU_USE_TLS           -fopenmp   -DTAU_OPENMP -DTAU_UNIFY   -I/home/pedroeusebio/local/tau2/include     -DPROFILING_ON            -DTAU_PAPI -I/home/pedroeusebio/local/papi/src -I/home/pedroeusebio/local/papi/include             -DTAU_GNU -DTAU_DOT_H_LESS_HEADERS                     -DTAU_LINUX_TIMERS                                 -DTAU_LARGEFILE -D_LARGEFILE64_SOURCE                        -DHAVE_TR1_HASH_MAP    -DTAU_SS_ALLOC_SUPPORT  -DEBS_CLOCK_RES=1  -DTAU_STRSIGNAL_OK    -DTAU_TRACK_LD_LOADER     -DTAU_OPENMP_NESTED   -DTAU_USE_TLS           -fopenmp   -DTAU_OPENMP -DTAU_UNIFY   -I/home/pedroeusebio/local/tau2/include    -o main.pomp.o -g -finstrument-functions -finstrument-functions-exclude-file-list=/usr/include  
+Error: Reverting to a Regular Make
+To suppress this message and revert automatically, please add -optRevert to your TAU_OPTIONS environment variable
+Press Enter to continue
+ 
+
+
+Debug: Removing pompregions.c
+Executing> /bin/rm -f pompregions.c
+
+
+Debug: Creating pompregions.c
+Executing> /usr/bin/nm -B main.pomp.o | /bin/grep -E -i POMP2_Init_reg | gawk -f /home/pedroeusebio/local/tau2/x86_64/bin/pomp2-parse-init-regions.awk > pompregions.c
+/usr/bin/nm: 'main.pomp.o': No such file
+
+
+Debug: Compiling pompregions.c
+Executing> gcc -c -I/home/pedroeusebio/local/tau2/include -DPROFILING_ON -DTAU_PAPI -I/home/pedroeusebio/local/papi/src -I/home/pedroeusebio/local/papi/include -DTAU_GNU -DTAU_DOT_H_LESS_HEADERS -DTAU_LINUX_TIMERS -DTAU_LARGEFILE -D_LARGEFILE64_SOURCE -DHAVE_TR1_HASH_MAP -DTAU_SS_ALLOC_SUPPORT -DEBS_CLOCK_RES=1 -DTAU_STRSIGNAL_OK -DTAU_TRACK_LD_LOADER -DTAU_OPENMP_NESTED -DTAU_USE_TLS -fopenmp -DTAU_OPENMP -DTAU_UNIFY pompregions.c
+
+
+Debug: Linking (Together) object files
+Executing> /usr/bin/gcc -openmp pompregions.o main.pomp.o -L/home/pedroeusebio/local/tau2/x86_64/lib -ltau-papi-openmp-opari -Wl,-rpath,/home/pedroeusebio/local/papi/lib -L/home/pedroeusebio/local/papi/lib/ -L/home/pedroeusebio/local/papi/lib64/ -lpapi -Wl,--export-dynamic -lrt -ldl -lm -ldl -lm -L/usr/lib/gcc/x86_64-linux-gnu/4.8/ -lstdc++ -lgcc_s -L/home/pedroeusebio/local/tau2/x86_64/lib/static-papi-openmp-opari -fopenmp -o wave.exe
+gcc: error: main.pomp.o: No such file or directory
+
+
+Debug: Removing pompregions.c pompregions.o main.cc.opari.inc
+Executing> /bin/rm -f pompregions.c pompregions.o main.cc.opari.inc
+
+
+Debug: Compiling with Non-Instrumented Regular Code
+Executing> /usr/bin/gcc -openmp main.cc -o wave.exe
+
+make: *** [all] Error 1

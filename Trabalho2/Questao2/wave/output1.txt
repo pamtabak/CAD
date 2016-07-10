@@ -1,0 +1,669 @@
+
+
+Debug: Parsing with Opari2
+Executing> /home/pedroeusebio/local/tau/x86_64/bin/opari2 --nosrc main.cc main.pomp.cc
+
+
+Debug: Parsing with PDT Parser.
+Executing> /home/pedroeusebio/local/pdt/x86_64/bin/cparse main.pomp.cc -D_OPENMP -I/home/pedroeusebio/local/tau/include -DPROFILING_ON -DTAU_PAPI -I/home/pedroeusebio/local/papi/src -I/home/pedroeusebio/local/papi/include -DTAU_GNU -DTAU_DOT_H_LESS_HEADERS -DTAU_LINUX_TIMERS -DTAU_LARGEFILE -D_LARGEFILE64_SOURCE -DHAVE_TR1_HASH_MAP -DTAU_SS_ALLOC_SUPPORT -DEBS_CLOCK_RES=1 -DTAU_STRSIGNAL_OK -DTAU_TRACK_LD_LOADER -DTAU_OPENMP_NESTED -DTAU_USE_TLS -fopenmp -DTAU_OPENMP -DTAU_UNIFY -D_OPENMP -I/home/pedroeusebio/local/tau/include
+"main.cc.opari.inc", line 8: error: expected an identifier
+  extern "C" 
+         ^
+
+"main.cc.opari.inc", line 9: error: expected a ";"
+  {
+  ^
+
+"/home/pedroeusebio/local/pdt/include/kai/mcompile.h", line 136: error: 
+          identifier "namespace" is undefined
+  namespace __kai {
+  ^
+
+"/home/pedroeusebio/local/pdt/include/kai/mcompile.h", line 136: error: 
+          expected a ";"
+  namespace __kai {
+                  ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/cwchar", line 98: error: this
+          declaration has no storage class or type specifier
+        using ::wctob;
+        ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/cwchar", line 98: error: 
+          expected a ";"
+        using ::wctob;
+              ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/cwchar", line 99: error: this
+          declaration has no storage class or type specifier
+        using ::mbsinit;
+        ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/cwchar", line 99: error: 
+          expected a ";"
+        using ::mbsinit;
+              ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/cwchar", line 109: error: this
+          declaration has no storage class or type specifier
+        using ::wcsstr;
+        ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/cwchar", line 109: error: 
+          expected a ";"
+        using ::wcsstr;
+              ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/cwchar", line 120: error: 
+          expected a declaration
+  }  /* namespace std */
+  ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 38: error: this
+          declaration has no storage class or type specifier
+  template<class charT,class traits = char_traits<charT> > class basic_filebuf;
+  ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 38: error: expected a
+          ";"
+  template<class charT,class traits = char_traits<charT> > class basic_filebuf;
+          ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 39: error: this
+          declaration has no storage class or type specifier
+  template<class charT,class traits = char_traits<charT> > class basic_ifstream;
+  ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 39: error: expected a
+          ";"
+  template<class charT,class traits = char_traits<charT> > class basic_ifstream;
+          ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 40: error: this
+          declaration has no storage class or type specifier
+  template<class charT,class traits = char_traits<charT> > class basic_ofstream;
+  ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 40: error: expected a
+          ";"
+  template<class charT,class traits = char_traits<charT> > class basic_ofstream;
+          ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 41: error: this
+          declaration has no storage class or type specifier
+  template<class charT,class traits = char_traits<charT> > class basic_fstream;
+  ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 41: error: expected a
+          ";"
+  template<class charT,class traits = char_traits<charT> > class basic_fstream;
+          ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 42: error: this
+          declaration has no storage class or type specifier
+  template<class charT,class traits = char_traits<charT> > class basic_istreambuf_iterator;
+  ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 42: error: expected a
+          ";"
+  template<class charT,class traits = char_traits<charT> > class basic_istreambuf_iterator;
+          ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 43: error: this
+          declaration has no storage class or type specifier
+  template<class charT,class traits = char_traits<charT> > class basic_ostreambuf_iterator;
+  ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 43: error: expected a
+          ";"
+  template<class charT,class traits = char_traits<charT> > class basic_ostreambuf_iterator;
+          ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 45: error: this
+          declaration has no storage class or type specifier
+  template<class charT,class traits> basic_ostream<charT, traits>& __kai_insert_c_string(basic_ostream<charT,traits>& out, const charT* s, __kai::streamsize_t length = 0);
+  ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 45: error: expected a
+          ";"
+  template<class charT,class traits> basic_ostream<charT, traits>& __kai_insert_c_string(basic_ostream<charT,traits>& out, const charT* s, __kai::streamsize_t length = 0);
+          ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 47: error: expected a
+          ";"
+  typedef basic_ios<char> ios;
+                   ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 49: error: expected an
+          identifier
+  typedef basic_ios<wchar_t> wios;
+                   ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 52: error: expected a
+          ";"
+  typedef basic_streambuf<char> streambuf; 
+                         ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 53: error: expected a
+          ";"
+  typedef basic_istream<char> istream; 
+                       ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 54: error: expected a
+          ";"
+  typedef basic_ostream<char> ostream; 
+                       ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 55: error: expected a
+          ";"
+  typedef basic_iostream<char> iostream; 
+                        ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 57: error: expected a
+          ";"
+  typedef basic_stringbuf<char> stringbuf; 
+                         ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 58: error: expected a
+          ";"
+  typedef basic_istringstream<char> istringstream; 
+                             ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 59: error: expected a
+          ";"
+  typedef basic_ostringstream<char> ostringstream; 
+                             ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 60: error: expected a
+          ";"
+  typedef basic_stringstream<char> stringstream; 
+                            ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 62: error: expected a
+          ";"
+  typedef basic_filebuf<char> filebuf; 
+                       ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 63: error: expected a
+          ";"
+  typedef basic_ifstream<char> ifstream; 
+                        ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 64: error: expected a
+          ";"
+  typedef basic_ofstream<char> ofstream; 
+                        ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 65: error: expected a
+          ";"
+  typedef basic_fstream<char> fstream; 
+                       ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 68: error: expected an
+          identifier
+  typedef basic_streambuf<wchar_t> wstreambuf;
+                         ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 69: error: expected an
+          identifier
+  typedef basic_istream<wchar_t> wistream;
+                       ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 70: error: expected an
+          identifier
+  typedef basic_ostream<wchar_t> wostream;
+                       ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 71: error: expected an
+          identifier
+  typedef basic_iostream<wchar_t> wiostream;
+                        ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 73: error: expected an
+          identifier
+  typedef basic_stringbuf<wchar_t> wstringbuf;
+                         ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 74: error: expected an
+          identifier
+  typedef basic_istringstream<wchar_t> wistringstream;
+                             ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 75: error: expected an
+          identifier
+  typedef basic_ostringstream<wchar_t> wostringstream;
+                             ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 76: error: expected an
+          identifier
+  typedef basic_stringstream<wchar_t> wstringstream;
+                            ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 78: error: expected an
+          identifier
+  typedef basic_filebuf<wchar_t> wfilebuf;
+                       ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 79: error: expected an
+          identifier
+  typedef basic_ifstream<wchar_t> wifstream;
+                        ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 80: error: expected an
+          identifier
+  typedef basic_ofstream<wchar_t> wofstream;
+                        ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 81: error: expected an
+          identifier
+  typedef basic_fstream<wchar_t> wfstream;
+                       ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 84: error: this
+          declaration has no storage class or type specifier
+  template<class stateT> class fpos;
+  ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 84: error: expected a
+          ";"
+  template<class stateT> class fpos;
+          ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 86: error: expected a
+          ";"
+  typedef fpos<mbstate_t> streampos;
+              ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 88: error: expected an
+          identifier
+  typedef fpos<mbstate_t> wstreampos;
+              ^
+
+"/home/pedroeusebio/local/pdt/include/kai/iosfwd", line 90: error: expected a
+          declaration
+  } // namespace std
+  ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 56: error: this
+          declaration has no storage class or type specifier
+  template <class T>
+  ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 56: error: 
+          expected a ";"
+  template <class T>
+           ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 67: error: this
+          declaration has no storage class or type specifier
+  template <class T>
+  ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 67: error: 
+          expected a ";"
+  template <class T>
+           ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 80: error: this
+          declaration has no storage class or type specifier
+  template <class Category, class T, class Distance = ptrdiff_t, class Pointer = T*, class Reference = T& >
+  ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 80: error: 
+          expected a ";"
+  template <class Category, class T, class Distance = ptrdiff_t, class Pointer = T*, class Reference = T& >
+           ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 113: error: 
+          expected a declaration
+  }  // namespace std
+  ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 212: error: this
+          declaration has no storage class or type specifier
+  template <class Iter>
+  ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 212: error: 
+          expected a ";"
+  template <class Iter>
+           ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 262: error: this
+          declaration has no storage class or type specifier
+  template <class Container>
+  ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 262: error: 
+          expected a ";"
+  template <class Container>
+           ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 287: error: this
+          declaration has no storage class or type specifier
+  template <class Container>
+  ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 287: error: 
+          expected a ";"
+  template <class Container>
+           ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 315: error: this
+          declaration has no storage class or type specifier
+  template <class Container, class Iterator>
+  ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 315: error: 
+          expected a ";"
+  template <class Container, class Iterator>
+           ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 353: error: 
+          identifier "T" is undefined
+      T             value;
+      ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 356: error: 
+          identifier "in_stream" is undefined
+  	if (in_stream) {
+  	    ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 362: error: 
+          expected a declaration
+  };
+  ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 364: error: this
+          declaration has no storage class or type specifier
+  template <class T, class charT, class traits, class Distance>
+  ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 364: error: 
+          expected a ";"
+  template <class T, class charT, class traits, class Distance>
+           ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 402: error: 
+          identifier "charT" is undefined
+      const charT*  delim;
+            ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 403: error: 
+          expected a declaration
+  };
+  ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 406: error: this
+          declaration has no storage class or type specifier
+  template < class charT, class traits = char_traits<charT> >
+  ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 406: error: 
+          expected a ";"
+  template < class charT, class traits = char_traits<charT> >
+           ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 461: error: 
+          identifier "charT" is undefined
+      charT data;
+      ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 464: error: 
+          expected an expression
+  	traits::int_type c;
+  	       ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 465: error: 
+          identifier "sbuf" is undefined
+  	if (sbuf==NULL || traits::eq_int_type((c=sbuf->sgetc()), traits::eof())) {
+  	    ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 465: error: 
+          identifier "traits" is undefined
+  	if (sbuf==NULL || traits::eq_int_type((c=sbuf->sgetc()), traits::eof())) {
+  	                  ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 465: error: 
+          expected a ")"
+  	if (sbuf==NULL || traits::eq_int_type((c=sbuf->sgetc()), traits::eof())) {
+  	                        ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 467: error: 
+          expected a ";"
+  	    data=traits::eof();
+  	               ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 469: error: 
+          expected a ";"
+  	    data=traits::to_char_type(c);
+  	               ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 472: error: 
+          expected a declaration
+  };
+  ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 474: error: this
+          declaration has no storage class or type specifier
+  template <class charT, class traits>
+  ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 474: error: 
+          expected a ";"
+  template <class charT, class traits>
+           ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 507: error: 
+          expected a declaration
+  	return *this;
+  	^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 508: error: 
+          expected a declaration
+      }
+      ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 513: error: 
+          expected a declaration
+  };
+  ^
+
+"/home/pedroeusebio/local/pdt/include/kai/fix/iterator", line 582: error: 
+          expected a declaration
+  } // namespace std
+  ^
+
+"/home/pedroeusebio/local/pdt/include/kai/utility", line 42: error: identifier
+          "T2" is undefined
+      T2 second;
+      ^
+
+"/home/pedroeusebio/local/pdt/include/kai/utility", line 44: error: expected a
+          "{"
+      pair() : first (), second () {}
+             ^
+
+"/home/pedroeusebio/local/pdt/include/kai/utility", line 45: error: expected a
+          ")"
+      pair(const T1& a, const T2& b) : first (a), second (b) {}
+                   ^
+
+"/home/pedroeusebio/local/pdt/include/kai/utility", line 45: error: function
+          "pair" has already been defined
+      pair(const T1& a, const T2& b) : first (a), second (b) {}
+      ^
+
+"/home/pedroeusebio/local/pdt/include/kai/utility", line 45: error: expected a
+          "{"
+      pair(const T1& a, const T2& b) : first (a), second (b) {}
+                                     ^
+
+"/home/pedroeusebio/local/pdt/include/kai/utility", line 47: error: this
+          declaration has no storage class or type specifier
+      template<class U, class V> pair(const pair<U, V> &p): first(p.first), second(p.second) {}
+      ^
+
+Error limit reached.
+100 errors detected in the compilation of "main.pomp.cc".
+Compilation terminated.
+PDT: Error: Couldn't create main.pomp.cc.pdb: Invoking the alternate PDT parser based on EDG v4.10.1:
+/home/pedroeusebio/local/pdt/x86_64//bin/cparse4101 main.pomp.cc -D_OPENMP -I/home/pedroeusebio/local/tau/include -DPROFILING_ON -DTAU_PAPI -I/home/pedroeusebio/local/papi/src -I/home/pedroeusebio/local/papi/include -DTAU_GNU -DTAU_DOT_H_LESS_HEADERS -DTAU_LINUX_TIMERS -DTAU_LARGEFILE -D_LARGEFILE64_SOURCE -DHAVE_TR1_HASH_MAP -DTAU_SS_ALLOC_SUPPORT -DEBS_CLOCK_RES=1 -DTAU_STRSIGNAL_OK -DTAU_TRACK_LD_LOADER -DTAU_OPENMP_NESTED -DTAU_USE_TLS -fopenmp -DTAU_OPENMP -DTAU_UNIFY -D_OPENMP -I/home/pedroeusebio/local/tau/include
+PDT: Trying edgcpfe4101 without CSTDOPT=--c99
+/home/pedroeusebio/local/pdt/x86_64//bin/edgcpfe4101 --sys_include /home/pedroeusebio/local/pdt/contrib/rose/rose-header-gen/include/gcc_HEADERS  -D_OPENMP "-I/home/pedroeusebio/local/tau/include" -DPROFILING_ON -DTAU_PAPI "-I/home/pedroeusebio/local/papi/src" "-I/home/pedroeusebio/local/papi/include" -DTAU_GNU -DTAU_DOT_H_LESS_HEADERS -DTAU_LINUX_TIMERS -DTAU_LARGEFILE -D_LARGEFILE64_SOURCE -DHAVE_TR1_HASH_MAP -DTAU_SS_ALLOC_SUPPORT -DEBS_CLOCK_RES=1 -DTAU_STRSIGNAL_OK -DTAU_TRACK_LD_LOADER -DTAU_OPENMP_NESTED -DTAU_USE_TLS -DTAU_OPENMP -DTAU_UNIFY -D_OPENMP "-I/home/pedroeusebio/local/tau/include"  --sys_include /home/pedroeusebio/local/pdt/contrib/rose/rose-header-gen/include/gcc_HEADERS --sys_include /home/pedroeusebio/local/pdt/contrib/rose/rose-header-gen/include/gcc_HEADERS/hdrs --sys_include /home/pedroeusebio/local/pdt/contrib/rose/rose-header-gen/include/gcc_HEADERS/hdrs4 --sys_include /usr/lib/gcc/x86_64-linux-gnu/4.8/include --sys_include /usr/local/include --sys_include /usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed --sys_include /usr/include/x86_64-linux-gnu --sys_include /usr/include    -DPDT_MULTI_ARCH=1 -DPDT_MULTI_ARCH_x86_64=1 -DPDT_PARSER -DPDT_PARSER_EDG4101 -D__GNUG__=4 -D__GNUC__=4 -D__GNUC_MINOR__=8 -D__GNUC_PATCHLEVEL__=0 --preinclude rose_edg_required_macros_and_functions.h -DROSE_LANGUAGE_MODE=0 --gcc  --gnu_version 48000 -DPDT_C_LANG -D__null=0   --edg_base_dir /home/pedroeusebio/local/pdt/contrib/rose/rose-header-gen     -o /tmp/pdt.pedroeusebio.11183.il main.pomp.cc
+/home/pedroeusebio/local/pdt/x86_64//bin/edgcpfe4101 --sys_include /home/pedroeusebio/local/pdt/contrib/rose/rose-header-gen/include/gcc_HEADERS  -D_OPENMP "-I/home/pedroeusebio/local/tau/include" -DPROFILING_ON -DTAU_PAPI "-I/home/pedroeusebio/local/papi/src" "-I/home/pedroeusebio/local/papi/include" -DTAU_GNU -DTAU_DOT_H_LESS_HEADERS -DTAU_LINUX_TIMERS -DTAU_LARGEFILE -D_LARGEFILE64_SOURCE -DHAVE_TR1_HASH_MAP -DTAU_SS_ALLOC_SUPPORT -DEBS_CLOCK_RES=1 -DTAU_STRSIGNAL_OK -DTAU_TRACK_LD_LOADER -DTAU_OPENMP_NESTED -DTAU_USE_TLS -DTAU_OPENMP -DTAU_UNIFY -D_OPENMP "-I/home/pedroeusebio/local/tau/include"  --sys_include /home/pedroeusebio/local/pdt/contrib/rose/rose-header-gen/include/gcc_HEADERS --sys_include /home/pedroeusebio/local/pdt/contrib/rose/rose-header-gen/include/gcc_HEADERS/hdrs --sys_include /home/pedroeusebio/local/pdt/contrib/rose/rose-header-gen/include/gcc_HEADERS/hdrs4 --sys_include /usr/lib/gcc/x86_64-linux-gnu/4.8/include --sys_include /usr/local/include --sys_include /usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed --sys_include /usr/include/x86_64-linux-gnu --sys_include /usr/include    -DPDT_MULTI_ARCH=1 -DPDT_MULTI_ARCH_x86_64=1 -DPDT_PARSER -DPDT_PARSER_EDG4101 -D__GNUG__=4 -D__GNUC__=4 -D__GNUC_MINOR__=8 -D__GNUC_PATCHLEVEL__=0 --preinclude rose_edg_required_macros_and_functions.h -DROSE_LANGUAGE_MODE=0 --gcc  --gnu_version 48000 -DPDT_C_LANG -D__null=0   --edg_base_dir /home/pedroeusebio/local/pdt/contrib/rose/rose-header-gen     -o /tmp/pdt.pedroeusebio.11183.il main.pomp.cc
+"main.cc.opari.inc", line 8: error: expected an identifier
+  extern "C" 
+         ^
+
+"main.cc.opari.inc", line 9: error: expected a ";"
+  {
+  ^
+
+"main.pomp.cc", line 7: catastrophic error: cannot open source file "algorithm"
+  #include <algorithm>    // std::max, std::min
+                                               ^
+
+2 errors and 1 catastrophic error detected in the compilation of "main.pomp.cc".
+Compilation terminated.
+PDT: Error: Couldn't create main.pomp.cc.pdb: Trying the alternate PDT Rose parser based on EDG 4.4: 
+/home/pedroeusebio/local/pdt/x86_64//bin/edg44-c-roseparse main.pomp.cc -D_OPENMP -I/home/pedroeusebio/local/tau/include -DPROFILING_ON -DTAU_PAPI -I/home/pedroeusebio/local/papi/src -I/home/pedroeusebio/local/papi/include -DTAU_GNU -DTAU_DOT_H_LESS_HEADERS -DTAU_LINUX_TIMERS -DTAU_LARGEFILE -D_LARGEFILE64_SOURCE -DHAVE_TR1_HASH_MAP -DTAU_SS_ALLOC_SUPPORT -DEBS_CLOCK_RES=1 -DTAU_STRSIGNAL_OK -DTAU_TRACK_LD_LOADER -DTAU_OPENMP_NESTED -DTAU_USE_TLS -fopenmp -DTAU_OPENMP -DTAU_UNIFY -D_OPENMP -I/home/pedroeusebio/local/tau/include
+"/home/pedroeusebio/local/pdtoolkit-3.22/contrib/rose/edg44/x86_64/roseparse/include/g++_HEADERS/hdrs1/bits/stl_algobase.h", line 737: error: 
+          expected a ";"
+        for (__decltype(__n + 0) __niter = __n;
+                                 ^
+
+"/home/pedroeusebio/local/pdtoolkit-3.22/contrib/rose/edg44/x86_64/roseparse/include/g++_HEADERS/hdrs1/bits/stl_algobase.h", line 738: error: 
+          identifier "__niter" is undefined
+  	   __niter > 0; --__niter, ++__first)
+  	   ^
+
+"/home/pedroeusebio/local/pdtoolkit-3.22/contrib/rose/edg44/x86_64/roseparse/include/g++_HEADERS/hdrs1/bits/stl_algobase.h", line 749: error: 
+          expected a ";"
+        for (__decltype(__n + 0) __niter = __n;
+                                 ^
+
+"/home/pedroeusebio/local/pdtoolkit-3.22/contrib/rose/edg44/x86_64/roseparse/include/g++_HEADERS/hdrs1/bits/stl_algobase.h", line 750: error: 
+          identifier "__niter" is undefined
+  	   __niter > 0; --__niter, ++__first)
+  	   ^
+
+"/home/pedroeusebio/local/pdtoolkit-3.22/contrib/rose/edg44/x86_64/roseparse/include/g++_HEADERS/hdrs1/cstdlib", line 178: error: 
+          identifier "__int128" is undefined
+    inline __int128
+           ^
+
+"/home/pedroeusebio/local/pdtoolkit-3.22/contrib/rose/edg44/x86_64/roseparse/include/g++_HEADERS/hdrs1/cstdlib", line 179: error: 
+          identifier "__int128" is undefined
+    abs(__int128 __x) { return __x >= 0 ? __x : -__x; }
+        ^
+
+"/home/pedroeusebio/local/pdtoolkit-3.22/contrib/rose/edg44/x86_64/roseparse/include/g++_HEADERS/hdrs1/bits/stl_algo.h", line 5086: error: 
+          expected a ";"
+        for (__decltype(__n + 0) __niter = __n;
+                                 ^
+
+"/home/pedroeusebio/local/pdtoolkit-3.22/contrib/rose/edg44/x86_64/roseparse/include/g++_HEADERS/hdrs1/bits/stl_algo.h", line 5087: error: 
+          identifier "__niter" is undefined
+  	   __niter > 0; --__niter, ++__first)
+  	   ^
+
+terminate called after throwing an instance of 'rose_exception'
+  what():  Errors in Processing: (frontend_failed)
+/home/pedroeusebio/local/pdt/x86_64/bin/cparse: line 247: 11356 Aborted                 (core dumped) ${BINDIR}/edg44-c-roseparse ${ORIGARGS}
+PDT: Error parsing input file main.pomp.cc
+Trying Older PDT Rose parser based on EDG 3.3:
+/home/pedroeusebio/local/pdt/x86_64//bin/roseparse main.pomp.cc -D_OPENMP -I/home/pedroeusebio/local/tau/include -DPROFILING_ON -DTAU_PAPI -I/home/pedroeusebio/local/papi/src -I/home/pedroeusebio/local/papi/include -DTAU_GNU -DTAU_DOT_H_LESS_HEADERS -DTAU_LINUX_TIMERS -DTAU_LARGEFILE -D_LARGEFILE64_SOURCE -DHAVE_TR1_HASH_MAP -DTAU_SS_ALLOC_SUPPORT -DEBS_CLOCK_RES=1 -DTAU_STRSIGNAL_OK -DTAU_TRACK_LD_LOADER -DTAU_OPENMP_NESTED -DTAU_USE_TLS -fopenmp -DTAU_OPENMP -DTAU_UNIFY -D_OPENMP -I/home/pedroeusebio/local/tau/include
+"/home/pedroeusebio/local/pdt/contrib/rose/roseparse/include/g++_HEADERS/hdrs7/bits/byteswap.h", line 47: error: 
+          identifier "__builtin_bswap32" is undefined
+    return __builtin_bswap32 (__bsx);
+           ^
+
+"/home/pedroeusebio/local/pdt/contrib/rose/roseparse/include/g++_HEADERS/hdrs7/bits/byteswap.h", line 111: error: 
+          identifier "__builtin_bswap64" is undefined
+    return __builtin_bswap64 (__bsx);
+           ^
+
+"/home/pedroeusebio/local/pdt/contrib/rose/roseparse/include/g++_HEADERS/hdrs1/cstdlib", line 174: error: 
+          identifier "__builtin_llabs" is undefined
+    abs(long long __x) { return __builtin_llabs (__x); }
+                                ^
+
+"/home/pedroeusebio/local/pdt/contrib/rose/roseparse/include/g++_HEADERS/hdrs1/cstdlib", line 178: error: 
+          identifier "__int128" is undefined
+    inline __int128
+           ^
+
+"/home/pedroeusebio/local/pdt/contrib/rose/roseparse/include/g++_HEADERS/hdrs1/cstdlib", line 179: error: 
+          identifier "__int128" is undefined
+    abs(__int128 __x) { return __x >= 0 ? __x : -__x; }
+        ^
+
+terminate called after throwing an instance of 'rose_exception'
+  what():  Errors in Processing: (frontend_failed)
+/home/pedroeusebio/local/pdt/x86_64/bin/cparse: line 247: 11360 Aborted                 (core dumped) ${BINDIR}/roseparse ${ORIGARGS}
+PDT: Error parsing input file main.pomp.cc
+Error: Command(Executable) is -- 
+Error: Full Command attempted is -- /home/pedroeusebio/local/pdt/x86_64/bin/cparse main.pomp.cc  -D_OPENMP -I/home/pedroeusebio/local/tau/include -DPROFILING_ON            -DTAU_PAPI -I/home/pedroeusebio/local/papi/src -I/home/pedroeusebio/local/papi/include             -DTAU_GNU -DTAU_DOT_H_LESS_HEADERS                     -DTAU_LINUX_TIMERS                                 -DTAU_LARGEFILE -D_LARGEFILE64_SOURCE                        -DHAVE_TR1_HASH_MAP    -DTAU_SS_ALLOC_SUPPORT  -DEBS_CLOCK_RES=1  -DTAU_STRSIGNAL_OK    -DTAU_TRACK_LD_LOADER     -DTAU_OPENMP_NESTED   -DTAU_USE_TLS           -fopenmp   -DTAU_OPENMP -DTAU_UNIFY      -D_OPENMP   -I/home/pedroeusebio/local/tau/include    
+Error: Reverting to a Regular Make
+To suppress this message and revert automatically, please add -optRevert to your TAU_OPTIONS environment variable
+Press Enter to continue
+ 
+
+
+Debug: cleaning inst file
+Executing> /bin/rm -f main.pomp.inst.cc
+
+
+Debug: cleaning PDB file
+Executing> /bin/rm -f main.pomp.pdb
+
+Debug: PDT failed, switching to compiler-based instrumentation
+
+Debug: Using compiler-based instrumentation
+
+
+Debug: Compiling (Individually) with Instrumented Code
+Executing> /usr/bin/gcc -openmp -I. -c main.pomp.cc -DPROFILING_ON -DTAU_PAPI -I/home/pedroeusebio/local/papi/src -I/home/pedroeusebio/local/papi/include -DTAU_GNU -DTAU_DOT_H_LESS_HEADERS -DTAU_LINUX_TIMERS -DTAU_LARGEFILE -D_LARGEFILE64_SOURCE -DHAVE_TR1_HASH_MAP -DTAU_SS_ALLOC_SUPPORT -DEBS_CLOCK_RES=1 -DTAU_STRSIGNAL_OK -DTAU_TRACK_LD_LOADER -DTAU_OPENMP_NESTED -DTAU_USE_TLS -fopenmp -DTAU_OPENMP -DTAU_UNIFY -I/home/pedroeusebio/local/tau/include -DPROFILING_ON -DTAU_PAPI -I/home/pedroeusebio/local/papi/src -I/home/pedroeusebio/local/papi/include -DTAU_GNU -DTAU_DOT_H_LESS_HEADERS -DTAU_LINUX_TIMERS -DTAU_LARGEFILE -D_LARGEFILE64_SOURCE -DHAVE_TR1_HASH_MAP -DTAU_SS_ALLOC_SUPPORT -DEBS_CLOCK_RES=1 -DTAU_STRSIGNAL_OK -DTAU_TRACK_LD_LOADER -DTAU_OPENMP_NESTED -DTAU_USE_TLS -fopenmp -DTAU_OPENMP -DTAU_UNIFY -I/home/pedroeusebio/local/tau/include -o main.pomp.o -g -finstrument-functions -finstrument-functions-exclude-file-list=/usr/include
+main.pomp.cc: In function ‘void iso_3dfd_it(float***, float***, float***, float*, int, int, int)’:
+main.pomp.cc:200:52: error: ‘pomp2_ctc_2’ not specified in enclosing parallel
+ {   POMP2_For_enter( &pomp2_region_2, pomp2_ctc_2  );
+                                                    ^
+main.pomp.cc:197:9: error: enclosing parallel
+ #pragma omp parallel default(none) private(ii, jj, kk, i, j, k, value, ir) shared(ptr_next, ptr_prev, coeff, ptr_vel, n1, n2, n3, half, block)  POMP2_DLIST_00001 firstprivate(pomp2_old_task) if(pomp2_if) num_threads(pomp2_num_threads)
+         ^
+Error: Tried Looking for file: main.pomp.o
+Error: Command(Executable) is -- /usr/bin/gcc
+Error: Full Command attempted is -- /usr/bin/gcc  -openmp  -I. -c  main.pomp.cc    -DPROFILING_ON            -DTAU_PAPI -I/home/pedroeusebio/local/papi/src -I/home/pedroeusebio/local/papi/include             -DTAU_GNU -DTAU_DOT_H_LESS_HEADERS                     -DTAU_LINUX_TIMERS                                 -DTAU_LARGEFILE -D_LARGEFILE64_SOURCE                        -DHAVE_TR1_HASH_MAP    -DTAU_SS_ALLOC_SUPPORT  -DEBS_CLOCK_RES=1  -DTAU_STRSIGNAL_OK    -DTAU_TRACK_LD_LOADER     -DTAU_OPENMP_NESTED   -DTAU_USE_TLS           -fopenmp   -DTAU_OPENMP -DTAU_UNIFY   -I/home/pedroeusebio/local/tau/include     -DPROFILING_ON            -DTAU_PAPI -I/home/pedroeusebio/local/papi/src -I/home/pedroeusebio/local/papi/include             -DTAU_GNU -DTAU_DOT_H_LESS_HEADERS                     -DTAU_LINUX_TIMERS                                 -DTAU_LARGEFILE -D_LARGEFILE64_SOURCE                        -DHAVE_TR1_HASH_MAP    -DTAU_SS_ALLOC_SUPPORT  -DEBS_CLOCK_RES=1  -DTAU_STRSIGNAL_OK    -DTAU_TRACK_LD_LOADER     -DTAU_OPENMP_NESTED   -DTAU_USE_TLS           -fopenmp   -DTAU_OPENMP -DTAU_UNIFY   -I/home/pedroeusebio/local/tau/include    -o main.pomp.o -g -finstrument-functions -finstrument-functions-exclude-file-list=/usr/include  
+Error: Reverting to a Regular Make
+To suppress this message and revert automatically, please add -optRevert to your TAU_OPTIONS environment variable
+Press Enter to continue
+ 
+
+
+Debug: Removing pompregions.c
+Executing> /bin/rm -f pompregions.c
+
+
+Debug: Creating pompregions.c
+Executing> /usr/bin/nm -B main.pomp.o | /bin/grep -E -i POMP2_Init_reg | gawk -f /home/pedroeusebio/local/tau/x86_64/bin/pomp2-parse-init-regions.awk > pompregions.c
+/usr/bin/nm: 'main.pomp.o': No such file
+
+
+Debug: Compiling pompregions.c
+Executing> gcc -c -I/home/pedroeusebio/local/tau/include -DPROFILING_ON -DTAU_PAPI -I/home/pedroeusebio/local/papi/src -I/home/pedroeusebio/local/papi/include -DTAU_GNU -DTAU_DOT_H_LESS_HEADERS -DTAU_LINUX_TIMERS -DTAU_LARGEFILE -D_LARGEFILE64_SOURCE -DHAVE_TR1_HASH_MAP -DTAU_SS_ALLOC_SUPPORT -DEBS_CLOCK_RES=1 -DTAU_STRSIGNAL_OK -DTAU_TRACK_LD_LOADER -DTAU_OPENMP_NESTED -DTAU_USE_TLS -fopenmp -DTAU_OPENMP -DTAU_UNIFY pompregions.c
+
+
+Debug: Linking (Together) object files
+Executing> /usr/bin/gcc -openmp pompregions.o main.pomp.o -L/home/pedroeusebio/local/tau/x86_64/lib -ltau-papi-pdt-openmp-opari -Wl,-rpath,/home/pedroeusebio/local/papi/lib -L/home/pedroeusebio/local/papi/lib/ -L/home/pedroeusebio/local/papi/lib64/ -lpapi -Wl,--export-dynamic -lrt -ldl -lm -ldl -lm -L/usr/lib/gcc/x86_64-linux-gnu/4.8/ -lstdc++ -lgcc_s -L/home/pedroeusebio/local/tau/x86_64/lib/static-papi-pdt-openmp-opari -fopenmp -o wave.exe
+gcc: error: main.pomp.o: No such file or directory
+
+
+Debug: Removing pompregions.c pompregions.o main.cc.opari.inc
+Executing> /bin/rm -f pompregions.c pompregions.o main.cc.opari.inc
+
+
+Debug: Compiling with Non-Instrumented Regular Code
+Executing> /usr/bin/gcc -openmp main.cc -o wave.exe
+
+make: *** [all] Error 1
