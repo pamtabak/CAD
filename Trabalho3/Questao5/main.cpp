@@ -1,9 +1,10 @@
 #include "mpi.h"
 #include <stdio.h>
-
-#define N 4
+#include <stdlib.h>
 
 using namespace std;
+
+#define N 1000
 
 // Compile: mpic++ -std=c++11 main.cpp -o main.out
 // Execute: mpirun -np <#PROCESS> ./main.out
@@ -19,13 +20,10 @@ void fill_matrix(int matrix[N][N])
 	}
 }
 
+int a[N][N], b[N][N], result[N][N];
 
 int main(int argc, char * argv[])
 {	
-	int a[N][N], b[N][N], result[N][N];
-	int tag = 10;
-	MPI_Status status;
-
 	MPI_Init(&argc, &argv);
 
 	int size;
@@ -44,8 +42,10 @@ int main(int argc, char * argv[])
 	if (rank == 0)
 	{
 		// O processo mestre deve criar as matrizes A e B
+		cout << "trying to allocate" << endl;
 		fill_matrix(a);
 		fill_matrix(b);
+		cout << "allocated" << endl;
 	}
 	
 
