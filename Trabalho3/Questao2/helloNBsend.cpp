@@ -3,8 +3,8 @@
 
 using namespace std;
 
-// Compile: mpic++ -std=c++11 helloBsend.cpp -o helloBsend.out
-// Execute: mpirun -np <#PROCESS> ./helloBsend.out
+// Compile: mpic++ -std=c++11 helloNBsend.cpp -o helloNBsend.out
+// Execute: mpirun -np <#PROCESS> ./helloNBsend.out
 
 int main(int argc, char * argv[])
 {
@@ -38,13 +38,21 @@ int main(int argc, char * argv[])
 
 	// Cada tarefa envia para seu parceiro uma mensagem com um inteiro: seu rank
 	vector[0] = rank;
-	MPI_Send(vector,1,MPI_INT,partner,rank,MPI_COMM_WORLD);
+	
+	MPI_Request requestSend, requestReceive;
+
+	MPI_Isend(vector,1,MPI_INT,partner,rank,MPI_COMM_WORLD, &requestSend);
 	printf("Envio. Tarefa %d enviou para %d \n", rank, partner);
 
 	// Cada tarefa recebe do seu parceiro uma mensagem com um inteiro: taskid do parceiro
-	MPI_Status status;
-	MPI_Recv(vector,1,MPI_INT,partner,partner,MPI_COMM_WORLD, &status);
+	MPI_Irecv(vector,1,MPI_INT,partner,partner,MPI_COMM_WORLD, &requestReceive);
 	printf("Recebimento. Tarefa %d recebeu de %d \n", rank, partner);
+
+	/* MPI_Wait, de modo que um rank nao finalize
+	   sua execucacao antes de receber uma mensagem */
+	MPI_Status status;
+	MPI_Wait(&requestSend, &status);
+	MPI_Wait(&requestReceive, &status);
 
 	MPI_Finalize();
 	
