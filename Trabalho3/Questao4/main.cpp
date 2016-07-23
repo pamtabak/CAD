@@ -47,5 +47,13 @@ int main(int argc, char * argv[])
 
 	MPI_Finalize();
 
+	for (int i = 0; i < matrixDimension; i++)
+	{
+		delete [] a[i];
+		delete [] b[i];
+	}
+	delete [] a;
+	delete [] b;
+
 	return 0;
 }
