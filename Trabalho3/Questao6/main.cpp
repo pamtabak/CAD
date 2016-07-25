@@ -1,12 +1,13 @@
 #include <mpi.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <chrono>
 
 using namespace std;
 
-#define N 100000000
-#define F 30
-#define J 14
+#define N 100
+#define F 3
+#define J 1
 
 // Compile: mpic++ -std=c++11 main.cpp -o main.out
 // Execute: mpirun -np <#PROCESS> ./main.out
@@ -24,6 +25,8 @@ int a[N], b[N];
 
 int main(int argc, char * argv[])
 {
+  chrono::high_resolution_clock::time_point startTime = chrono::high_resolution_clock::now();
+
 	MPI_Init(&argc, &argv);
 
 	int size;
@@ -81,6 +84,10 @@ int main(int argc, char * argv[])
 	}
 
 	MPI_Finalize();
+
+  chrono::high_resolution_clock::time_point endTime = chrono::high_resolution_clock::now();
+  chrono::duration<double> endTimeSpan = chrono::duration_cast<chrono::duration<double> >(endTime - startTime);
+  printf("end: %lf secs\n", endTimeSpan.count());
 
 	return 0;
 }
