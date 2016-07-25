@@ -50,5 +50,8 @@ int main(int argc, char * argv[])
     }
   std::cout << result << std::endl;
 
+  delete[] a;
+  delete[] b;
+
 	return 0;
 }
