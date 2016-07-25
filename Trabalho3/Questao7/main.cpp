@@ -3,9 +3,12 @@
 Jogo da Vida
 Versão sequencial
 
+url para ver a implementacão :
+https://www.pdc.kth.se/education/tutorials/mpi-course/mpi-lab-2-collective-and-non-blocking-communication/solutions/game_of_life-collective.c 
+
 ************************/
 
-#include <stdio.h>
+#Include <stdio.h>
 #include <stdlib.h>
 
 #include <mpi.h>      /* Arquivo de cabecalho mpi.h */
@@ -42,7 +45,7 @@ int main(int argc, char *argv[])
     for(j=1; j<=NJ; j++)
     {
       x = rand()/((float)RAND_MAX + 1);
-      if(x<0.5)
+      if(x < 0.5)
       {
        old[i][j] = 0;
       }
@@ -62,11 +65,18 @@ int main(int argc, char *argv[])
   int rank;
   MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
+	printf("Ola! Eu sou o processo %d. O numero total de tarefas é %d \n", rank, size);
+
+  char outfilename[255];
+  sprintf(outfilename, "found.data_%d", rank);
+  FILE* file = fopen(outfilename, "w");
+  fprintf(file, "Sou a tarefa %d\n", rank);
+
   /* */
   for(n = 0; n < NSTEPS; n++)
   {
 
-    /* condicoes de controno para as esquinas do dominio */
+    /* condicoes de contorno para as esquinas do dominio */
     old[0][0]       = old[NI][NJ];
     old[0][NJ+1]    = old[NI][1];
     old[NI+1][NJ+1] = old[1][1];
@@ -147,6 +157,8 @@ int main(int argc, char *argv[])
 
   free(old);
   free(new);
+
+  MPI_Finalize();
 
   return 0;
 }
