@@ -33,7 +33,7 @@ int main(int argc, char * argv[])
 	MPI_Comm_size(MPI_COMM_WORLD, &size);
 
   // necessario ser double pois para arrays muito grandes é possivel ocorrer overfloat do int;
-  double result[size];
+  double result = 0, partialResult = 0;
 
 	int rank;
 	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
@@ -61,27 +61,22 @@ int main(int argc, char * argv[])
 	MPI_Scatter(&b, count, MPI_INT, &b[from], count, MPI_INT, 0, MPI_COMM_WORLD);
 
 	// Cada processo deve calcular uma porcao da multiplicacao matricial AxB
-  result[rank] = 0;
+  partialResult = 0;
 
 	for (int x = from; x < to; x++)
 	{
-    result[rank] += a[x] * b[x];
+    partialResult += a[x] * b[x];
 	}
 
 	// Recolha as porcoes dos calculos para o processo mestre
 	MPI_Gather (&result[rank], 1, MPI_DOUBLE, &result, 1, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+  MPI_Reduce(&partialResult, &result, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
 
 	// O processo mestre deve imprimir o resultado
 	if (rank == 0)
 	{
-    double total = 0;
-		for (int x = 0; x < size; x++)
-		{
-      cout << result[x] << endl;
-      total += result[x];
-		}
-    cout << total << endl;
-	}
+    printf("the result sum =%d\n", result);
+  }
 
 	MPI_Finalize();
 
