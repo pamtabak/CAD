@@ -69,13 +69,12 @@ int main(int argc, char * argv[])
 	}
 
 	// Recolha as porcoes dos calculos para o processo mestre
-	MPI_Gather (&result[rank], 1, MPI_DOUBLE, &result, 1, MPI_DOUBLE, 0, MPI_COMM_WORLD);
   MPI_Reduce(&partialResult, &result, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
 
 	// O processo mestre deve imprimir o resultado
 	if (rank == 0)
 	{
-    printf("the result sum =%d\n", result);
+    printf("the result sum =%lf\n", result);
   }
 
 	MPI_Finalize();
