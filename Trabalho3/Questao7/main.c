@@ -8,7 +8,7 @@ https://www.pdc.kth.se/education/tutorials/mpi-course/mpi-lab-2-collective-and-n
 
 ************************/
 
-#Include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 #include <mpi.h>      /* Arquivo de cabecalho mpi.h */
@@ -157,6 +157,8 @@ int main(int argc, char *argv[])
 
   free(old);
   free(new);
+
+  fclose(file);
 
   MPI_Finalize();
 
