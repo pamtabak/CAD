@@ -187,16 +187,23 @@ int main(int argc, char *argv[])
   //   }
   }
 
-  // /*  Conta o número de celulas  vivas no final */
-  // isum = 0;
-  // for(i = 1; i <= NI; i++)
-  // {
-  //   for(j = 1; j <= NJ; j++)
-  //   {
-  //     isum = isum + new[i][j];
-  //   }
-  // }
-  // printf("\n# Celulas Vivas = %d\n", isum);
+  /*  Conta o número de celulas  vivas no final */
+  isum = 0;
+  for(i = 1; i <= NI; i++)
+  {
+    for(j = 1; j <= NJ; j++)
+    {
+      isum = isum + new[i][j];
+    }
+  }
+  fprintf("\n# Celulas Vivas = %d\n", isum);
+  int globalResult = 0;
+  MPI_Reduce(&isum, &globalResult, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
+
+  if(rank == 0)
+  {
+    fprintf("Total de células vivas = %d\n", globalResult);
+  }
 
 
   for(i = 0; i < ni; i++)
